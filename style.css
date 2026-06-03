@@ -1,12 +1,12 @@
-/* ================================================================
-   SPOTIFY CLONE — style.css (iTunes API Edition)
+﻿/* ================================================================
+   SPOTIFY CLONE â€” style.css (iTunes API Edition)
    ================================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-  --green: #1DB954;
-  --green-bright: #1ed760;
+  --green: #8B5CF6;
+  --green-bright: #a78bfa;
   --bg-base: #121212;
   --bg-elevated: #1a1a1a;
   --bg-highlight: #282828;
@@ -36,14 +36,14 @@ input { font-family: inherit; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.4); }
 
-/* ─── APP LAYOUT ─── */
+/* â”€â”€â”€ APP LAYOUT â”€â”€â”€ */
 #app {
   display: grid;
   grid-template-columns: var(--sidebar-w) 1fr;
   height: calc(100vh - var(--player-h));
 }
 
-/* ─── SIDEBAR ─── */
+/* â”€â”€â”€ SIDEBAR â”€â”€â”€ */
 #sidebar {
   background: var(--sidebar-bg);
   display: flex;
@@ -83,13 +83,13 @@ input { font-family: inherit; }
 .genre-item:hover { background: var(--bg-highlight); color: var(--text-base); }
 .genre-item span { font-size: 16px; }
 
-/* ─── MAIN CONTENT ─── */
+/* â”€â”€â”€ MAIN CONTENT â”€â”€â”€ */
 #main-content {
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--bg-elevated); position: relative;
 }
 
-/* ─── TOPBAR ─── */
+/* â”€â”€â”€ TOPBAR â”€â”€â”€ */
 #topbar {
   position: sticky; top: 0; z-index: 10;
   display: flex; align-items: center; justify-content: space-between;
@@ -107,7 +107,7 @@ input { font-family: inherit; }
 .arrow-btn svg { width: 18px; height: 18px; }
 .arrow-btn:hover { background: rgba(0,0,0,0.9); }
 
-/* ─── TOPBAR SEARCH ─── */
+/* â”€â”€â”€ TOPBAR SEARCH â”€â”€â”€ */
 .topbar-center { flex: 1; max-width: 600px; }
 .topbar-search-wrap {
   position: relative; display: flex; align-items: center;
@@ -141,12 +141,12 @@ input { font-family: inherit; }
 .user-avatar svg { width: 20px; height: 20px; }
 .user-avatar:hover { background: var(--bg-press, #3e3e3e); }
 
-/* ─── VIEWS ─── */
+/* â”€â”€â”€ VIEWS â”€â”€â”€ */
 .view { display: none; flex: 1; overflow: hidden; }
 .view.active { display: flex; flex-direction: column; }
 .view-scroll { flex: 1; overflow-y: auto; padding: 0 24px 120px; margin-top: -62px; padding-top: 0; }
 
-/* ─── HOME ─── */
+/* â”€â”€â”€ HOME â”€â”€â”€ */
 .greeting-header {
   padding: 80px 0 24px;
   background: linear-gradient(180deg, #0d3320 0%, var(--bg-elevated) 100%);
@@ -192,7 +192,7 @@ input { font-family: inherit; }
 .card-title { font-size: 13px; font-weight: 700; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card-subtitle { font-size: 12px; color: var(--text-subdued); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-/* ─── LOADING ─── */
+/* â”€â”€â”€ LOADING â”€â”€â”€ */
 .loading-hero {
   display: flex; flex-direction: column; align-items: center;
   justify-content: center; padding: 80px 0; gap: 16px; color: var(--text-subdued);
@@ -211,7 +211,7 @@ input { font-family: inherit; }
 }
 .search-loading p { font-size: 14px; }
 
-/* ─── SEARCH VIEW ─── */
+/* â”€â”€â”€ SEARCH VIEW â”€â”€â”€ */
 .search-idle-state {
   display: flex; flex-direction: column; align-items: center;
   justify-content: center; gap: 12px; padding: 120px 0;
@@ -230,7 +230,7 @@ input { font-family: inherit; }
 .results-header h2 { font-size: 22px; font-weight: 800; }
 .results-count { font-size: 12px; color: var(--text-subdued); font-weight: 600; }
 
-/* ─── LIKED SONGS ─── */
+/* â”€â”€â”€ LIKED SONGS â”€â”€â”€ */
 .liked-hero {
   display: flex; align-items: flex-end; gap: 24px;
   padding: 80px 0 24px; margin: 0 -24px; padding-left: 24px; padding-right: 24px;
@@ -255,7 +255,7 @@ input { font-family: inherit; }
 .empty-state p { font-size: 20px; font-weight: 700; color: var(--text-base); }
 .empty-state small { font-size: 13px; }
 
-/* ─── TRACK TABLE ─── */
+/* â”€â”€â”€ TRACK TABLE â”€â”€â”€ */
 .track-table-header {
   display: grid;
   grid-template-columns: 44px 1fr 1fr 90px;
@@ -310,7 +310,7 @@ input { font-family: inherit; }
 .track-row:hover .like-row-btn { opacity: 1; }
 .track-duration { font-size: 13px; color: var(--text-subdued); }
 
-/* ─── EQUALIZER ANIMATION ─── */
+/* â”€â”€â”€ EQUALIZER ANIMATION â”€â”€â”€ */
 .equalizer { display: flex; align-items: flex-end; gap: 2px; height: 16px; }
 .equalizer span {
   width: 3px; background: var(--green); border-radius: 1px;
@@ -321,7 +321,7 @@ input { font-family: inherit; }
 .equalizer span:nth-child(3) { height: 6px; animation-delay: 0.4s; }
 @keyframes eq { from { transform: scaleY(0.4); } to { transform: scaleY(1); } }
 
-/* ─── PLAYER BAR ─── */
+/* â”€â”€â”€ PLAYER BAR â”€â”€â”€ */
 #player-bar {
   position: fixed; bottom: 0; left: 0; right: 0;
   height: var(--player-h); background: var(--player-bg);
@@ -393,7 +393,7 @@ input { font-family: inherit; }
   border: 1px solid rgba(29,185,84,0.3);
 }
 
-/* ─── TOAST ─── */
+/* â”€â”€â”€ TOAST â”€â”€â”€ */
 #toast {
   position: fixed; bottom: calc(var(--player-h) + 16px); left: 50%;
   transform: translateX(-50%) translateY(20px);
@@ -407,7 +407,7 @@ input { font-family: inherit; }
 #toast.toast-success { background: var(--green); color: #000; }
 #toast.toast-error   { background: #e53e3e; }
 
-/* ─── RESPONSIVE ─── */
+/* â”€â”€â”€ RESPONSIVE â”€â”€â”€ */
 @media (max-width: 900px) {
   :root { --sidebar-w: 72px; }
   .logo span, .nav-btn span, .sidebar-section-header, .genre-item span + * { display: none; }
@@ -457,3 +457,4 @@ input { font-family: inherit; }
 .quality-badge.full    { background:rgba(29,185,84,0.15); color:var(--green); border:1px solid rgba(29,185,84,0.35); }
 .quality-badge.preview { background:rgba(255,152,0,0.15);  color:#ff9800;     border:1px solid rgba(255,152,0,0.35); }
 .quality-badge.loading { background:rgba(255,255,255,0.08);color:var(--text-subdued);border:1px solid var(--border); }
+
