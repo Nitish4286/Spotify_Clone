@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spotify — Any Song, Full Length</title>
-  <meta name="description" content="Search and play any song fully. Powered by YouTube music." />
+  <title>Musify — Stream Any Song</title>
+  <meta name="description" content="Search and stream any song in the world. Free music player powered by YouTube." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -19,17 +19,17 @@
 
 <div id="app">
 
-  <!-- ─── SIDEBAR ─── -->
+  <!-- â”€â”€â”€ SIDEBAR â”€â”€â”€ -->
   <aside id="sidebar">
     <div class="sidebar-top">
       <div class="logo" id="nav-home">
         <svg viewBox="0 0 24 24" fill="none">
-          <circle cx="12" cy="12" r="12" fill="#1DB954"/>
-          <path d="M17.5 16.5C14.5 14.5 9.5 14 6 15.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M18.5 12.5C14.5 10 8.5 9.5 5 11.5" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
-          <path d="M17 8.5C13.5 6.5 8 6.5 5 8" stroke="white" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="12" cy="12" r="12" fill="#8B5CF6"/>
+          <path d="M10 17V9l7-2v8" stroke="white" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="8.5" cy="17" r="1.5" fill="white"/>
+          <circle cx="15.5" cy="15" r="1.5" fill="white"/>
         </svg>
-        <span>Spotify</span>
+        <span>Musify</span>
       </div>
       <nav class="main-nav">
         <button class="nav-btn active" id="nav-home-btn">
@@ -50,21 +50,21 @@
     <div class="sidebar-section">
       <div class="sidebar-section-header"><span>GENRES</span></div>
       <ul class="genre-list">
-        <li class="genre-item" data-q="bollywood hits 2024"><span>🎬</span><span>Bollywood</span></li>
-        <li class="genre-item" data-q="arijit singh songs"><span>🎤</span><span>Arijit Singh</span></li>
-        <li class="genre-item" data-q="punjabi hits 2024"><span>🎵</span><span>Punjabi</span></li>
-        <li class="genre-item" data-q="hip hop rap 2024"><span>🔥</span><span>Hip-Hop</span></li>
-        <li class="genre-item" data-q="pop songs 2024"><span>🌊</span><span>Pop</span></li>
-        <li class="genre-item" data-q="lofi chill music"><span>☕</span><span>Lo-Fi</span></li>
-        <li class="genre-item" data-q="rock classic hits"><span>🎸</span><span>Rock</span></li>
-        <li class="genre-item" data-q="k-pop 2024"><span>🌸</span><span>K-Pop</span></li>
-        <li class="genre-item" data-q="taylor swift songs"><span>⭐</span><span>Taylor Swift</span></li>
-        <li class="genre-item" data-q="electronic dance music"><span>⚡</span><span>EDM</span></li>
+        <li class="genre-item" data-q="bollywood hits 2024"><span>ðŸŽ¬</span><span>Bollywood</span></li>
+        <li class="genre-item" data-q="arijit singh songs"><span>ðŸŽ¤</span><span>Arijit Singh</span></li>
+        <li class="genre-item" data-q="punjabi hits 2024"><span>ðŸŽµ</span><span>Punjabi</span></li>
+        <li class="genre-item" data-q="hip hop rap 2024"><span>ðŸ”¥</span><span>Hip-Hop</span></li>
+        <li class="genre-item" data-q="pop songs 2024"><span>ðŸŒŠ</span><span>Pop</span></li>
+        <li class="genre-item" data-q="lofi chill music"><span>â˜•</span><span>Lo-Fi</span></li>
+        <li class="genre-item" data-q="rock classic hits"><span>ðŸŽ¸</span><span>Rock</span></li>
+        <li class="genre-item" data-q="k-pop 2024"><span>ðŸŒ¸</span><span>K-Pop</span></li>
+        <li class="genre-item" data-q="taylor swift songs"><span>â­</span><span>Taylor Swift</span></li>
+        <li class="genre-item" data-q="electronic dance music"><span>âš¡</span><span>EDM</span></li>
       </ul>
     </div>
   </aside>
 
-  <!-- ─── MAIN ─── -->
+  <!-- â”€â”€â”€ MAIN â”€â”€â”€ -->
   <main id="main-content">
     <div id="topbar">
       <div class="nav-arrows">
@@ -90,7 +90,7 @@
       <div class="view-scroll">
         <div class="greeting-header">
           <h1 id="greeting-text">Good Evening</h1>
-          <p class="greeting-sub">Search any song — plays in full length ✨</p>
+          <p class="greeting-sub">Search any song â€” plays in full length âœ¨</p>
         </div>
         <div id="home-sections">
           <div class="loading-hero"><div class="spinner"></div><p>Loading music...</p></div>
@@ -106,7 +106,7 @@
             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
           </div>
           <h2>Search for any song</h2>
-          <p>Type any song name, artist, or album — plays the full song!</p>
+          <p>Type any song name, artist, or album â€” plays the full song!</p>
         </div>
         <div id="search-loading" class="search-loading" style="display:none">
           <div class="spinner"></div>
@@ -144,7 +144,7 @@
         <div class="empty-state" id="liked-empty">
           <svg viewBox="0 0 24 24" fill="currentColor" width="64"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
           <p>Songs you like appear here</p>
-          <small>Hit ♥ on any song to save it</small>
+          <small>Hit â™¥ on any song to save it</small>
         </div>
         <div id="liked-list" class="track-table" style="display:none"></div>
       </div>
@@ -206,7 +206,7 @@
         </div>
       </div>
     </div>
-    <div id="quality-badge" class="quality-badge">▶ YouTube</div>
+    <div id="quality-badge" class="quality-badge">â–¶ YouTube</div>
   </div>
 </footer>
 
@@ -215,3 +215,4 @@
 <script src="app.js"></script>
 </body>
 </html>
+

@@ -1,13 +1,13 @@
-'use strict';
+﻿'use strict';
 
-/* ══════════════════════════════════════════════════════
-   SPOTIFY CLONE — YouTube Full Song Edition v3
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   Musify â€” YouTube Full Song Edition v3
    Search: iTunes API
-   Video ID: Piped API → Invidious → CORS proxy (YouTube HTML)
+   Video ID: Piped API â†’ Invidious â†’ CORS proxy (YouTube HTML)
    Audio: YouTube IFrame API (full length, no limit)
-   ══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
-/* ─── Timeout helper (works in all browsers) ─── */
+/* â”€â”€â”€ Timeout helper (works in all browsers) â”€â”€â”€ */
 function withTimeout(promise, ms) {
   return Promise.race([
     promise,
@@ -15,9 +15,9 @@ function withTimeout(promise, ms) {
   ]);
 }
 
-/* ══════════════════════════════════════════════════════
-   VIDEO ID LOOKUP — 4 methods, most reliable first
-   ══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   VIDEO ID LOOKUP â€” 4 methods, most reliable first
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 
 /* Method 1: Piped API (open-source YT frontend, very reliable) */
 const PIPED_INSTANCES = [
@@ -136,7 +136,7 @@ async function searchYouTubeInternal(query) {
   return null;
 }
 
-/* Master lookup — tries all 4 methods */
+/* Master lookup â€” tries all 4 methods */
 async function findVideoId(title, artist) {
   const query = `${title} ${artist}`;
 
@@ -157,9 +157,9 @@ async function findVideoId(title, artist) {
   return null;
 }
 
-/* ══════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    YouTube IFrame Player
-   ══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 let ytPlayer  = null;
 let ytReady   = false;
 let ytPending = null;
@@ -195,10 +195,10 @@ function onYTError(e) {
   console.warn('YT error:', e.data);
   // If video is unembeddable (code 101/150), try next song
   if (e.data === 101 || e.data === 150) {
-    showToast('⚠️ Song blocked on this site. Trying next…', 'error');
+    showToast('âš ï¸ Song blocked on this site. Trying nextâ€¦', 'error');
     setTimeout(() => nextSong(), 800);
   } else {
-    showToast('⚠️ YouTube error. Trying next…', 'error');
+    showToast('âš ï¸ YouTube error. Trying nextâ€¦', 'error');
     setTimeout(() => nextSong(), 800);
   }
 }
@@ -220,9 +220,9 @@ function startTick() {
 }
 function stopTick() { clearInterval(progressId); progressId = null; }
 
-/* ══════════════════════════════════════════════════════
-   iTunes — search metadata & cover art
-   ══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   iTunes â€” search metadata & cover art
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 async function searchItunes(query, limit = 25) {
   try {
     const res  = await fetch(`https://itunes.apple.com/search?term=${encodeURIComponent(query)}&media=music&entity=song&limit=${limit}`);
@@ -240,9 +240,9 @@ async function searchItunes(query, limit = 25) {
   } catch (e) { console.warn('iTunes:', e); return []; }
 }
 
-/* ══════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    PLAYER STATE
-   ══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const state = {
   currentSong: null, queue: [], currentIndex: 0,
   isPlaying: false, isShuffle: false, repeatMode: 0,
@@ -250,7 +250,7 @@ const state = {
 };
 try { state.likedSongs = JSON.parse(localStorage.getItem('liked_songs') || '[]'); } catch {}
 
-/* ─── Utils ─── */
+/* â”€â”€â”€ Utils â”€â”€â”€ */
 function fmtTime(s) {
   if (!s || isNaN(s)) return '0:00';
   return `${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
@@ -273,7 +273,7 @@ function setBadge(text, type) {
   if (b) { b.textContent = text; b.className = `quality-badge ${type}`; }
 }
 
-/* ─── Views ─── */
+/* â”€â”€â”€ Views â”€â”€â”€ */
 const vHome   = document.getElementById('view-home');
 const vSearch = document.getElementById('view-search');
 const vLiked  = document.getElementById('view-liked');
@@ -287,16 +287,16 @@ function switchView(name) {
   if (name === 'liked') renderLiked();
 }
 
-/* ══════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    HOME
-   ══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const HOME_SECTIONS = [
-  { title:'🔥 Trending Now',            query:'top hits 2024',          limit:10 },
-  { title:'💚 Bollywood Blockbusters',   query:'bollywood hits 2024',    limit:10 },
-  { title:'🎤 Hip-Hop & Rap',            query:'hip hop rap 2024',       limit:8  },
-  { title:'🌊 Pop Anthems',              query:'pop songs 2024',         limit:8  },
-  { title:'🎬 Punjabi Hits',             query:'punjabi songs 2024',     limit:8  },
-  { title:'⚡ Electronic & Dance',       query:'electronic dance 2024',  limit:8  },
+  { title:'ðŸ”¥ Trending Now',            query:'top hits 2024',          limit:10 },
+  { title:'ðŸ’š Bollywood Blockbusters',   query:'bollywood hits 2024',    limit:10 },
+  { title:'ðŸŽ¤ Hip-Hop & Rap',            query:'hip hop rap 2024',       limit:8  },
+  { title:'ðŸŒŠ Pop Anthems',              query:'pop songs 2024',         limit:8  },
+  { title:'ðŸŽ¬ Punjabi Hits',             query:'punjabi songs 2024',     limit:8  },
+  { title:'âš¡ Electronic & Dance',       query:'electronic dance 2024',  limit:8  },
 ];
 
 async function renderHome() {
@@ -344,9 +344,9 @@ function buildCard(song, queue) {
   return card;
 }
 
-/* ══════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    SEARCH
-   ══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 const globalSearch   = document.getElementById('global-search');
 const globalClearBtn = document.getElementById('global-clear-btn');
 let searchTimeout = null, lastQuery = '';
@@ -373,7 +373,7 @@ async function doSearch(query) {
   document.getElementById('search-state-idle').style.display = 'none';
   document.getElementById('search-loading').style.display    = 'flex';
   document.getElementById('search-results').style.display    = 'none';
-  document.getElementById('search-loading-text').textContent = `Searching "${query}"…`;
+  document.getElementById('search-loading-text').textContent = `Searching "${query}"â€¦`;
 
   const songs = await searchItunes(query, 30);
   if (query !== lastQuery) return;
@@ -389,7 +389,7 @@ async function doSearch(query) {
   }
 
   document.getElementById('results-title').textContent = `"${query}"`;
-  document.getElementById('results-count').textContent = `${songs.length} songs · Full playback`;
+  document.getElementById('results-count').textContent = `${songs.length} songs Â· Full playback`;
 
   const list = document.getElementById('search-results-list');
   list.innerHTML = '';
@@ -405,9 +405,9 @@ document.querySelectorAll('.genre-item').forEach(el => {
   });
 });
 
-/* ══════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    LIKED
-   ══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function renderLiked() {
   const list=document.getElementById('liked-list'), empty=document.getElementById('liked-empty');
   document.getElementById('liked-count-text').textContent=`${state.likedSongs.length} songs`;
@@ -416,9 +416,9 @@ function renderLiked() {
   state.likedSongs.forEach((s,i)=>list.appendChild(buildRow(s,i+1,state.likedSongs)));
 }
 
-/* ══════════════════════════════════════════════════════
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
    TRACK ROW
-   ══════════════════════════════════════════════════════ */
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 function buildRow(song, num, songList) {
   const active = state.currentSong?.id===song.id, liked=isLiked(song.id);
   const row = document.createElement('div');
@@ -450,9 +450,9 @@ function buildRow(song, num, songList) {
   return row;
 }
 
-/* ══════════════════════════════════════════════════════
-   PLAY SONG — finds YouTube video ID & plays full song
-   ══════════════════════════════════════════════════════ */
+/* â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+   PLAY SONG â€” finds YouTube video ID & plays full song
+   â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â• */
 async function playSong(song, queue=[song]) {
   // If same song clicked again, just toggle play/pause
   if (state.currentSong?.id === song.id && ytPlayer && ytReady) {
@@ -467,26 +467,26 @@ async function playSong(song, queue=[song]) {
 
   updatePlayerUI(song);
   updateTrackHighlights();
-  document.title = `${song.title} — ${song.artist}`;
-  setBadge('⏳ Loading…', 'loading');
+  document.title = `${song.title} â€” ${song.artist}`;
+  setBadge('â³ Loadingâ€¦', 'loading');
   updatePlayPauseBtn();
 
   const videoId = await findVideoId(song.title, song.artist);
 
   if (videoId) {
     loadVideo(videoId);
-    setBadge('▶ Full Song', 'full');
-    showToast(`▶ ${song.title} — ${song.artist}`);
+    setBadge('â–¶ Full Song', 'full');
+    showToast(`â–¶ ${song.title} â€” ${song.artist}`);
   } else {
     // Absolute fallback: iTunes 30s preview
     state.isPlaying = false;
     updatePlayPauseBtn();
-    setBadge('⚠ Could not load', 'preview');
-    showToast('⚠️ Song unavailable. Try another.', 'error');
+    setBadge('âš  Could not load', 'preview');
+    showToast('âš ï¸ Song unavailable. Try another.', 'error');
   }
 }
 
-/* ─── Controls ─── */
+/* â”€â”€â”€ Controls â”€â”€â”€ */
 function togglePlayPause() {
   if (!state.currentSong || !ytPlayer || !ytReady) return;
   if (state.isPlaying) { ytPlayer.pauseVideo(); state.isPlaying=false; }
@@ -512,13 +512,13 @@ function prevSong() {
 function toggleShuffle() {
   state.isShuffle=!state.isShuffle;
   document.getElementById('btn-shuffle').classList.toggle('active',state.isShuffle);
-  showToast(state.isShuffle?'🔀 Shuffle on':'🔀 Shuffle off');
+  showToast(state.isShuffle?'ðŸ”€ Shuffle on':'ðŸ”€ Shuffle off');
 }
 
 function toggleRepeat() {
   state.repeatMode=(state.repeatMode+1)%3;
   document.getElementById('btn-repeat').classList.toggle('active',state.repeatMode>0);
-  showToast(['Repeat off','🔁 Repeat all','🔂 Repeat one'][state.repeatMode]);
+  showToast(['Repeat off','ðŸ” Repeat all','ðŸ”‚ Repeat one'][state.repeatMode]);
 }
 
 function setVolume(pct) {
@@ -545,7 +545,7 @@ function showMuteIcon(m) {
 
 function toggleLike(song) {
   if (isLiked(song.id)) { state.likedSongs=state.likedSongs.filter(s=>s.id!==song.id); showToast('Removed from Liked Songs'); }
-  else                  { state.likedSongs.unshift(song); showToast('💚 Saved to Liked Songs','success'); }
+  else                  { state.likedSongs.unshift(song); showToast('ðŸ’š Saved to Liked Songs','success'); }
   saveLiked();
   const liked=isLiked(song.id);
   document.querySelectorAll(`.like-row-btn[data-id="${song.id}"]`).forEach(b=>b.classList.toggle('liked',liked));
@@ -553,7 +553,7 @@ function toggleLike(song) {
   if (vLiked.classList.contains('active')) renderLiked();
 }
 
-/* ─── UI ─── */
+/* â”€â”€â”€ UI â”€â”€â”€ */
 function updatePlayerUI(song) {
   const art=document.getElementById('player-art'), ph=document.getElementById('no-art-ph');
   if (song.cover){art.src=song.cover;art.style.display='block';ph.style.display='none';}
@@ -562,7 +562,7 @@ function updatePlayerUI(song) {
   document.getElementById('player-artist-name').textContent = song.artist;
   document.getElementById('player-like-btn').classList.toggle('liked',isLiked(song.id));
   document.getElementById('current-time').textContent = '0:00';
-  document.getElementById('total-time').textContent   = fmtTime(song.duration)||'–:––';
+  document.getElementById('total-time').textContent   = fmtTime(song.duration)||'â€“:â€“â€“';
 }
 
 function updatePlayPauseBtn() {
@@ -581,7 +581,7 @@ function updateTrackHighlights() {
   });
 }
 
-/* ─── Seek bars ─── */
+/* â”€â”€â”€ Seek bars â”€â”€â”€ */
 function setupSeek(el, cb) {
   let drag=false;
   const pct=e=>Math.max(0,Math.min(1,(e.clientX-el.getBoundingClientRect().left)/el.offsetWidth));
@@ -594,7 +594,7 @@ setupSeek(document.getElementById('progress-bar'),pct=>{
 });
 setupSeek(document.getElementById('volume-bar'),pct=>setVolume(pct));
 
-/* ─── Keyboard ─── */
+/* â”€â”€â”€ Keyboard â”€â”€â”€ */
 document.addEventListener('keydown',e=>{
   if(['INPUT','TEXTAREA'].includes(document.activeElement.tagName))return;
   if(e.code==='Space'){e.preventDefault();togglePlayPause();}
@@ -607,7 +607,7 @@ document.addEventListener('keydown',e=>{
   if(e.code==='KeyF'||e.code==='Slash'){e.preventDefault();globalSearch.focus();globalSearch.select();}
 });
 
-/* ─── Controls ─── */
+/* â”€â”€â”€ Controls â”€â”€â”€ */
 document.getElementById('btn-play-pause').addEventListener('click',togglePlayPause);
 document.getElementById('btn-next').addEventListener('click',nextSong);
 document.getElementById('btn-prev').addEventListener('click',prevSong);
@@ -616,13 +616,14 @@ document.getElementById('btn-repeat').addEventListener('click',toggleRepeat);
 document.getElementById('btn-mute').addEventListener('click',toggleMute);
 document.getElementById('player-like-btn').addEventListener('click',()=>{if(state.currentSong)toggleLike(state.currentSong);});
 
-/* ─── Nav ─── */
+/* â”€â”€â”€ Nav â”€â”€â”€ */
 document.getElementById('nav-home-btn').addEventListener('click',()=>{switchView('home');globalSearch.value='';globalClearBtn.style.display='none';});
 document.getElementById('nav-search-btn').addEventListener('click',()=>{switchView('search');globalSearch.focus();});
 document.getElementById('nav-liked-btn').addEventListener('click',()=>switchView('liked'));
 document.getElementById('nav-home').addEventListener('click',()=>{switchView('home');globalSearch.value='';globalClearBtn.style.display='none';});
 document.querySelectorAll('.view-scroll').forEach(el=>el.addEventListener('scroll',()=>document.getElementById('topbar').classList.toggle('scrolled',el.scrollTop>60)));
 
-/* ─── Init ─── */
+/* â”€â”€â”€ Init â”€â”€â”€ */
 document.getElementById('greeting-text').textContent = greetingText();
 renderHome();
+
