@@ -115,12 +115,20 @@
             <div class="cards-row" id="top-mixes-row"><!-- JS --></div>
           </div>
 
-          <div class="section-block">
+          <div class="section-block" id="all-songs-section">
             <div class="section-header">
-              <h2>Featured Charts</h2>
-              <button class="show-all-btn">Show all</button>
+              <h2>All Songs</h2>
+              <span class="song-count-label" id="all-songs-count">15 songs</span>
             </div>
-            <div class="cards-row" id="featured-charts-row"><!-- JS --></div>
+            <div class="track-table-header">
+              <span class="col-num">#</span>
+              <span class="col-title">TITLE</span>
+              <span class="col-album">ALBUM</span>
+              <span class="col-duration">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              </span>
+            </div>
+            <div id="all-songs-list" class="track-table"><!-- JS --></div>
           </div>
         </div>
       </section>
@@ -139,8 +147,16 @@
             </div>
           </div>
 
-          <div id="search-results-section" style="display:none">
-            <h2>Search Results</h2>
+          <div id="search-results-section">
+            <h2>All Songs</h2>
+            <div class="track-table-header">
+              <span class="col-num">#</span>
+              <span class="col-title">TITLE</span>
+              <span class="col-album">ALBUM</span>
+              <span class="col-duration">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="16"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zM12.5 7H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+              </span>
+            </div>
             <div class="track-table" id="search-results-list"></div>
           </div>
 

@@ -163,10 +163,11 @@ function renderHome() {
   // Greeting
   document.getElementById('greeting-text').textContent = greetingText();
 
-  // Quick picks (first 6 playlists / songs)
+  // Quick picks — clicking plays the first song of that playlist
   const qpGrid = document.getElementById('quick-picks-grid');
   qpGrid.innerHTML = '';
   PLAYLISTS.slice(0, 6).forEach(pl => {
+    const songs = pl.songs.map(id => getSong(id)).filter(Boolean);
     const item = document.createElement('div');
     item.className = 'quick-pick-item';
     item.innerHTML = `
@@ -176,30 +177,40 @@ function renderHome() {
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
       </div>
     `;
+    // Left area → open playlist, play button → play immediately
+    item.querySelector('.quick-pick-play').addEventListener('click', e => {
+      e.stopPropagation();
+      playSong(songs[0], songs);
+    });
     item.addEventListener('click', () => switchView('playlist', pl));
     qpGrid.appendChild(item);
   });
 
-  // Recently Played
+  // Recently Played — individual songs
   renderCardRow('recently-played-row', SONGS.slice(0, 6).map(s => ({
     title: s.title, subtitle: s.artist, cover: s.cover, song: s
-  })));
+  })), SONGS);
 
-  // Top Mixes
+  // Top Mixes — playlists
   renderCardRow('top-mixes-row', PLAYLISTS.map(pl => ({
     title: pl.name, subtitle: pl.desc, cover: pl.cover, playlist: pl
-  })));
+  })), null);
 
-  // Featured Charts
+  // Featured Charts — more individual songs
   renderCardRow('featured-charts-row', SONGS.slice(5, 11).map(s => ({
     title: s.title, subtitle: s.artist, cover: s.cover, song: s
-  })));
+  })), SONGS);
+
+  // All Songs table
+  renderAllSongsTable('all-songs-list', SONGS);
 }
 
-function renderCardRow(containerId, items) {
+function renderCardRow(containerId, items, songQueue) {
   const container = document.getElementById(containerId);
   if (!container) return;
   container.innerHTML = '';
+  // Build the queue of only songs (for continuous play)
+  const queue = songQueue || items.filter(i => i.song).map(i => i.song);
   items.forEach(item => {
     const card = document.createElement('div');
     card.className = 'music-card';
@@ -213,14 +224,28 @@ function renderCardRow(containerId, items) {
       <div class="card-title">${item.title}</div>
       <div class="card-subtitle">${item.subtitle}</div>
     `;
-    card.addEventListener('click', (e) => {
+    card.addEventListener('click', () => {
       if (item.playlist) {
+        // Play the playlist's first song immediately AND show the view
+        const plSongs = item.playlist.songs.map(id => getSong(id)).filter(Boolean);
+        playSong(plSongs[0], plSongs);
         switchView('playlist', item.playlist);
       } else if (item.song) {
-        playSong(item.song, SONGS);
+        playSong(item.song, queue.length ? queue : SONGS);
       }
     });
     container.appendChild(card);
+  });
+}
+
+// Render a full track-table of ALL songs
+function renderAllSongsTable(containerId, songs) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  container.innerHTML = '';
+  songs.forEach((song, idx) => {
+    const row = buildTrackRow(song, idx + 1, songs);
+    container.appendChild(row);
   });
 }
 
@@ -228,7 +253,10 @@ function renderCardRow(containerId, items) {
    6. SEARCH VIEW
    ══════════════════════════════════════════════════════ */
 function renderSearch() {
-  // Categories
+  // Always show all songs section
+  handleSearch(document.getElementById('search-input').value.trim());
+
+  // Categories grid (build once)
   const grid = document.getElementById('category-grid');
   if (grid && !grid.children.length) {
     CATEGORIES.forEach(cat => {
@@ -237,7 +265,9 @@ function renderSearch() {
       card.style.background = `linear-gradient(135deg, ${cat.color}dd, ${cat.color}88)`;
       card.innerHTML = `<span>${cat.name}</span>`;
       card.addEventListener('click', () => {
-        document.getElementById('search-input').value = cat.name;
+        const inp = document.getElementById('search-input');
+        inp.value = cat.name;
+        clearBtn.style.display = 'flex';
         handleSearch(cat.name);
       });
       grid.appendChild(card);
@@ -260,34 +290,47 @@ searchInput.addEventListener('input', () => {
 clearBtn.addEventListener('click', () => {
   searchInput.value = '';
   clearBtn.style.display = 'none';
-  resultsSection.style.display = 'none';
-  browseSection.style.display = '';
+  handleSearch('');
 });
 
 function handleSearch(q) {
-  if (!q) {
-    resultsSection.style.display = 'none';
-    browseSection.style.display = '';
-    return;
-  }
-  const lower = q.toLowerCase();
-  const results = SONGS.filter(s =>
-    s.title.toLowerCase().includes(lower) ||
-    s.artist.toLowerCase().includes(lower) ||
-    s.album.toLowerCase().includes(lower)
-  );
+  const lower = q.toLowerCase().trim();
 
+  // Filter songs — if empty query show ALL songs
+  const results = lower
+    ? SONGS.filter(s =>
+        s.title.toLowerCase().includes(lower) ||
+        s.artist.toLowerCase().includes(lower) ||
+        s.album.toLowerCase().includes(lower)
+      )
+    : SONGS;
+
+  // Always show results section with songs
   resultsSection.style.display = '';
-  browseSection.style.display = 'none';
+
+  // Show/hide browse categories
+  browseSection.style.display = lower ? 'none' : '';
+
+  // Update heading
+  const heading = resultsSection.querySelector('h2');
+  if (heading) {
+    heading.textContent = lower ? `Results for "${q}"` : 'All Songs';
+  }
+
   resultsList.innerHTML = '';
 
   if (!results.length) {
-    resultsList.innerHTML = `<p style="color:var(--text-subdued);padding:16px 0;">No results for "${q}"</p>`;
+    resultsList.innerHTML = `
+      <div style="padding:32px 0;text-align:center;color:var(--text-subdued)">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="48" style="opacity:0.3;margin-bottom:12px"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <p style="font-size:22px;font-weight:700;color:var(--text-base)">No results found</p>
+        <p>Try searching for a song name, artist, or album.</p>
+      </div>`;
     return;
   }
 
   results.forEach((song, idx) => {
-    const row = buildTrackRow(song, idx + 1, SONGS);
+    const row = buildTrackRow(song, idx + 1, results);
     resultsList.appendChild(row);
   });
 }
