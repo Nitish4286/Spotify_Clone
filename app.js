@@ -17,21 +17,21 @@ const COVERS = {
 };
 
 const SONGS = [
-  { id: 1,  title: 'Neon Dreams',         artist: 'The Synthwave Collective', album: 'Electric Nights',    cover: COVERS.c1, duration: 214, src: null },
-  { id: 2,  title: 'Midnight Run',         artist: 'Luna Beats',               album: 'Midnight Pulse',     cover: COVERS.c2, duration: 187, src: null },
-  { id: 3,  title: 'Aqua Horizon',         artist: 'Ocean Mind',               album: 'Deep Blue',          cover: COVERS.c3, duration: 242, src: null },
-  { id: 4,  title: 'Forest Walk',          artist: 'Echo Verde',               album: 'Nature Tones',       cover: COVERS.c4, duration: 198, src: null },
-  { id: 5,  title: 'Crimson Petals',       artist: 'Rose Canvas',              album: 'Bloom',              cover: COVERS.c5, duration: 223, src: null },
-  { id: 6,  title: 'Galactic Drift',       artist: 'The Synthwave Collective', album: 'Electric Nights',    cover: COVERS.c1, duration: 259, src: null },
-  { id: 7,  title: 'Amber Glow',           artist: 'Luna Beats',               album: 'Midnight Pulse',     cover: COVERS.c2, duration: 175, src: null },
-  { id: 8,  title: 'Crystal Cave',         artist: 'Ocean Mind',               album: 'Deep Blue',          cover: COVERS.c3, duration: 310, src: null },
-  { id: 9,  title: 'Verdant Path',         artist: 'Echo Verde',               album: 'Nature Tones',       cover: COVERS.c4, duration: 207, src: null },
-  { id: 10, title: 'Velvet Twilight',      artist: 'Rose Canvas',              album: 'Bloom',              cover: COVERS.c5, duration: 230, src: null },
-  { id: 11, title: 'Pulse & Static',       artist: 'The Synthwave Collective', album: 'Electric Nights',    cover: COVERS.c1, duration: 195, src: null },
-  { id: 12, title: 'Solar Flare',          artist: 'Luna Beats',               album: 'Midnight Pulse',     cover: COVERS.c2, duration: 268, src: null },
-  { id: 13, title: 'Tidal Wave',           artist: 'Ocean Mind',               album: 'Deep Blue',          cover: COVERS.c3, duration: 184, src: null },
-  { id: 14, title: 'Mossy Stone',          artist: 'Echo Verde',               album: 'Nature Tones',       cover: COVERS.c4, duration: 215, src: null },
-  { id: 15, title: 'Blossom Rain',         artist: 'Rose Canvas',              album: 'Bloom',              cover: COVERS.c5, duration: 190, src: null },
+  { id: 1,  title: 'Neon Dreams',         artist: 'The Synthwave Collective', album: 'Electric Nights',    cover: COVERS.c1, duration: 372, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3' },
+  { id: 2,  title: 'Midnight Run',         artist: 'Luna Beats',               album: 'Midnight Pulse',     cover: COVERS.c2, duration: 360, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3' },
+  { id: 3,  title: 'Aqua Horizon',         artist: 'Ocean Mind',               album: 'Deep Blue',          cover: COVERS.c3, duration: 290, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3' },
+  { id: 4,  title: 'Forest Walk',          artist: 'Echo Verde',               album: 'Nature Tones',       cover: COVERS.c4, duration: 310, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3' },
+  { id: 5,  title: 'Crimson Petals',       artist: 'Rose Canvas',              album: 'Bloom',              cover: COVERS.c5, duration: 338, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3' },
+  { id: 6,  title: 'Galactic Drift',       artist: 'The Synthwave Collective', album: 'Electric Nights',    cover: COVERS.c1, duration: 358, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3' },
+  { id: 7,  title: 'Amber Glow',           artist: 'Luna Beats',               album: 'Midnight Pulse',     cover: COVERS.c2, duration: 337, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3' },
+  { id: 8,  title: 'Crystal Cave',         artist: 'Ocean Mind',               album: 'Deep Blue',          cover: COVERS.c3, duration: 371, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3' },
+  { id: 9,  title: 'Verdant Path',         artist: 'Echo Verde',               album: 'Nature Tones',       cover: COVERS.c4, duration: 267, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-9.mp3' },
+  { id: 10, title: 'Velvet Twilight',      artist: 'Rose Canvas',              album: 'Bloom',              cover: COVERS.c5, duration: 279, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3' },
+  { id: 11, title: 'Pulse & Static',       artist: 'The Synthwave Collective', album: 'Electric Nights',    cover: COVERS.c1, duration: 382, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-11.mp3' },
+  { id: 12, title: 'Solar Flare',          artist: 'Luna Beats',               album: 'Midnight Pulse',     cover: COVERS.c2, duration: 344, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-12.mp3' },
+  { id: 13, title: 'Tidal Wave',           artist: 'Ocean Mind',               album: 'Deep Blue',          cover: COVERS.c3, duration: 303, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-13.mp3' },
+  { id: 14, title: 'Mossy Stone',          artist: 'Echo Verde',               album: 'Nature Tones',       cover: COVERS.c4, duration: 268, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-14.mp3' },
+  { id: 15, title: 'Blossom Rain',         artist: 'Rose Canvas',              album: 'Bloom',              cover: COVERS.c5, duration: 322, src: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-15.mp3' },
 ];
 
 const PLAYLISTS = [
@@ -414,57 +414,31 @@ function playSong(song, queue = SONGS) {
   player.currentIndex = player.queue.findIndex(s => s.id === song.id);
   player.isPlaying = true;
 
-  // Update audio source
-  if (song.src) {
-    audioEl.src = song.src;
-    audioEl.play().catch(() => {});
-  } else {
-    // No real audio — simulate playback with a timer
-    audioEl.src = '';
-    simulatePlayback(song.duration);
+  // Stop any current playback
+  audioEl.pause();
+  clearInterval(progressInterval);
+
+  // Always use real audio src
+  audioEl.src = song.src;
+  audioEl.volume = player.volume;
+  audioEl.muted = player.isMuted;
+
+  const playPromise = audioEl.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(err => {
+      console.warn('Audio play failed:', err);
+      showToast('⚠️ Could not load audio. Check your internet connection.');
+      player.isPlaying = false;
+      updatePlayPauseBtn();
+    });
   }
 
   updatePlayerUI();
   updateNowPlayingPanel();
   updateTrackHighlights();
-  startProgressInterval();
 }
 
-let simStart = null;
-let simDuration = 0;
-let simPaused = false;
-let simElapsed = 0;
-
-function simulatePlayback(duration) {
-  clearInterval(progressInterval);
-  simDuration = duration;
-  simStart = Date.now();
-  simElapsed = 0;
-  simPaused = false;
-
-  progressInterval = setInterval(() => {
-    if (simPaused) return;
-    simElapsed = (Date.now() - simStart) / 1000;
-    if (simElapsed >= simDuration) {
-      simElapsed = simDuration;
-      clearInterval(progressInterval);
-      onSongEnd();
-      return;
-    }
-    updateProgress(simElapsed, simDuration);
-  }, 500);
-}
-
-function startProgressInterval() {
-  clearInterval(progressInterval);
-  if (audioEl.src && audioEl.src !== window.location.href) {
-    progressInterval = setInterval(() => {
-      if (!isNaN(audioEl.duration)) {
-        updateProgress(audioEl.currentTime, audioEl.duration);
-      }
-    }, 500);
-  }
-}
+// Progress is tracked via 'timeupdate' event — no polling needed
 
 function updateProgress(cur, total) {
   const pct = total > 0 ? (cur / total) * 100 : 0;
@@ -497,16 +471,11 @@ function togglePlayPause() {
   if (!player.currentSong) return;
   player.isPlaying = !player.isPlaying;
 
-  if (player.currentSong.src && audioEl.src) {
-    player.isPlaying ? audioEl.play() : audioEl.pause();
+  if (player.isPlaying) {
+    const p = audioEl.play();
+    if (p !== undefined) p.catch(() => { player.isPlaying = false; updatePlayPauseBtn(); });
   } else {
-    // Simulated
-    if (player.isPlaying) {
-      simStart = Date.now() - simElapsed * 1000;
-      simPaused = false;
-    } else {
-      simPaused = true;
-    }
+    audioEl.pause();
   }
   updatePlayPauseBtn();
 }
@@ -522,13 +491,9 @@ function nextSong() {
 }
 
 function prevSong() {
-  // If more than 3 sec in, restart; else go prev
-  const elapsed = simElapsed || audioEl.currentTime || 0;
-  if (elapsed > 3) {
-    if (audioEl.src) audioEl.currentTime = 0;
-    simStart = Date.now();
-    simElapsed = 0;
-    updateProgress(0, player.currentSong.duration);
+  // If more than 3 sec in, restart current song; else go to previous
+  if (audioEl.currentTime > 3) {
+    audioEl.currentTime = 0;
     return;
   }
   const prevIdx = player.currentIndex === 0
@@ -684,15 +649,9 @@ function setupSeekBar(barEl, onSeek) {
 
 setupSeekBar(document.getElementById('progress-bar'), pct => {
   if (!player.currentSong) return;
-  const total = player.currentSong.duration;
-  const newTime = pct * total;
-  if (audioEl.src && !isNaN(audioEl.duration)) {
-    audioEl.currentTime = newTime;
-  } else {
-    simElapsed = newTime;
-    simStart = Date.now() - newTime * 1000;
+  if (!isNaN(audioEl.duration) && audioEl.duration > 0) {
+    audioEl.currentTime = pct * audioEl.duration;
   }
-  updateProgress(newTime, total);
 });
 
 setupSeekBar(document.getElementById('volume-bar'), pct => {
