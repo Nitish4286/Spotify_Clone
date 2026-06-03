@@ -421,3 +421,33 @@ input { font-family: inherit; }
   .player-right .volume-slider-wrap, .player-right .preview-badge { display: none; }
   .player-left .player-track-info { max-width: 120px; }
 }
+
+/* --- QUALITY / SOURCE BADGES --- */
+.quality-badge {
+  font-size: 10px; font-weight: 700; padding: 3px 10px;
+  border-radius: 50px; white-space: nowrap; letter-spacing: 0.5px;
+}
+.quality-badge.full    { background: rgba(29,185,84,0.15); color: var(--green); border: 1px solid rgba(29,185,84,0.35); }
+.quality-badge.preview { background: rgba(255,152,0,0.15);  color: #ff9800;     border: 1px solid rgba(255,152,0,0.35); }
+
+/* Card badges */
+.card-art-wrap { position: relative; }
+.full-tag, .preview-tag {
+  position: absolute; top: 6px; left: 6px;
+  font-size: 9px; font-weight: 800; padding: 2px 7px;
+  border-radius: 50px; letter-spacing: 0.5px;
+}
+.full-tag    { background: rgba(29,185,84,0.85); color: #fff; }
+.preview-tag { background: rgba(255,152,0,0.85);  color: #fff; }
+
+/* Track row source dots */
+.track-thumb-wrap { position: relative; display: inline-flex; flex-shrink: 0; }
+.src-dot {
+  position: absolute; bottom: -2px; right: -2px;
+  width: 14px; height: 14px; border-radius: 50%;
+  font-size: 8px; font-weight: 900;
+  display: flex; align-items: center; justify-content: center;
+  border: 1px solid var(--bg-elevated);
+}
+.full-dot    { background: var(--green); color: #000; }
+.preview-dot { background: #ff9800;      color: #fff; }
